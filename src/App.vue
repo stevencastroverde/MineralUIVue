@@ -1,28 +1,32 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+   <m-button flat success>Disabled</m-button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import MButton from './components/MButton/MButton.vue';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
+    MButton,
   },
 };
 </script>
 
 <style lang="scss">
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit
+}
+html {
+  box-sizing: border-box;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: 'Open Sans' sans-serif;
 }
 </style>
