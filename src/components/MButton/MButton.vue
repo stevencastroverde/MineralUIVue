@@ -1,7 +1,7 @@
 <template>
     <button 
-    class="m-button" 
     :class="computedClass"
+    class="m-button" 
     :disabled="disabled"
     >
         <slot></slot>
@@ -16,20 +16,30 @@ export default {
             type: Boolean,
             default: false,
         },
-        flat: {
+        minimal: {
             type: Boolean,
             default: false,
         },
         success: {
             type: Boolean,
             default: false,
-        }
+        },
+        danger: {
+            type: Boolean,
+            default: false,
+        },
+        warning: {
+            type: Boolean,
+            default: false,
+        },
     },
     computed: {
         computedClass() {
             return {
-                'm-button--flat': this.flat,
-                'm-button--success': this.success
+                'm-button--minimal': this.minimal,
+                'm-button--success': this.success,
+                'm-button--warning': this.warning,
+                'm-button--danger': this.danger,
             }
         }
     }
@@ -38,6 +48,7 @@ export default {
 
 <style lang="scss">
     .m-button {
+        $root: &;
         line-height: 1.25;
         min-width: 2.5em;
         height: 2.5em;
@@ -49,14 +60,35 @@ export default {
         font-size: 1rem;
         color: #3272d9;
         transition: all .1s ease-in;
+
         &--success {
             color: #2a854e;
+            
+            #{$root}:hover & {
+                border-color: #2a854e;
+            }
         }
-        &--flat {
+        &--danger {
+            color: #de1b1b;
+             &:hover {
+                border-color: #de1b1b;
+            }
+        }
+        &--warning {
+            color: #ad5f00;
+             &:hover {
+                border-color: #ad5f00;
+            }
+        }
+        &--minimal {
             border-color: transparent;
+            &:hover {
+                border-color: transparent;
+            }
         }
         &:hover {
             background-color: rgba(#222, .1);
+            border-color: #3272d9;
         }
         &:disabled {
             color: #afbacc;

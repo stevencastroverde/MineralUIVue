@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-   <m-button flat success>Disabled</m-button>
+   <m-button success>Disabled</m-button>
   </div>
 </template>
 
