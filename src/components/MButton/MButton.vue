@@ -5,13 +5,19 @@
     class="m-button" 
     :disabled="disabled"
     >
-        <slot></slot>
+       <account-box />
+        <slot/>
+         <m-icon v-if="appendIcon" :icon-name="appendIcon" />
     </button>
 </template>
 
 <script>
+import AccountBox from '../MIcon/AccountBox.vue';
 export default {
     name: 'MButton',
+    components: {
+        AccountBox,
+    },
     props: {
         disabled: {
             type: Boolean,
@@ -41,6 +47,14 @@ export default {
             type: String,
             default: 'large',
             validator: (sizeProp) => ['small', 'medium', 'large', 'jumbo'].includes(sizeProp),
+        },
+        prependIcon: {
+            type: String,
+            default: null,
+        },
+        appendIcon: {
+            type: String,
+            default: null,
         },
     },
     computed: {

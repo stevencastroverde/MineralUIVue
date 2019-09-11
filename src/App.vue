@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-   <m-button success>Disabled</m-button>
+   <m-button disabled prepend-icon="account_box">Disabled</m-button>
   </div>
 </template>
 
