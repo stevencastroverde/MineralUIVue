@@ -5,18 +5,16 @@
     class="m-button" 
     :disabled="disabled"
     >
-       <account-box />
+       <component v-if="prependIcon" :is="fetchedPrependIcon" :size="iconSize"/>
         <slot/>
          <m-icon v-if="appendIcon" :icon-name="appendIcon" />
     </button>
 </template>
 
 <script>
-import AccountBox from '../MIcon/AccountBox.vue';
 export default {
     name: 'MButton',
     components: {
-        AccountBox,
     },
     props: {
         disabled: {
@@ -87,6 +85,18 @@ export default {
                     padding: '0 .75em',
                 },
             }
+            return sizing[this.size];
+        },
+        fetchedPrependIcon() {
+            return () => import(`@/components/Icons/${this.prependIcon}`);
+        },
+        iconSize() {
+            const sizing = {
+                small: 'small',
+                medium: 'medium',
+                large: 'medium',
+                jumbo: 'large',
+            };
             return sizing[this.size];
         }
     }

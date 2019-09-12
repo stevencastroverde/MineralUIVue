@@ -1,8 +1,8 @@
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    :width="width"
-    :height="height"
+    :width="heightAndWidth"
+    :height="heightAndWidth"
     viewBox="0 0 18 18"
     :aria-labelledby="iconName"
     role="presentation"
@@ -33,6 +33,21 @@ export default {
     iconColor: {
       type: String,
       default: "currentColor"
+    },
+    size: {
+      type: String,
+      default: 'medium',
+      validator: (size) => ['small', 'medium', 'large'].includes(size),
+    },
+  },
+  computed: {
+    heightAndWidth() {
+      const sizing = {
+        small: '0.75em',
+        medium: '1em',
+        large: '1.25em',
+      };
+      return sizing[this.size];
     }
   }
 };
