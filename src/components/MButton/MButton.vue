@@ -7,7 +7,7 @@
     >
        <component v-if="prependIcon" :is="fetchedPrependIcon" :size="iconSize"/>
         <slot/>
-         <m-icon v-if="appendIcon" :icon-name="appendIcon" />
+        <component v-if="appendIcon" :is="fetchedAppendIcon" :size="iconSize" />
     </button>
 </template>
 
@@ -54,6 +54,10 @@ export default {
             type: String,
             default: null,
         },
+        circular: {
+            type: Boolean,
+            default: false,
+        },
     },
     computed: {
         computedClass() {
@@ -89,6 +93,9 @@ export default {
         },
         fetchedPrependIcon() {
             return () => import(`@/components/Icons/${this.prependIcon}`);
+        },
+         fetchedAppendIcon() {
+            return () => import(`@/components/Icons/${this.appendIcon}`);
         },
         iconSize() {
             const sizing = {
@@ -185,6 +192,14 @@ export default {
         }
         &--full-width {
             width: 100%
+        }
+
+        //icons
+        [role="presentation"]:first-child {
+            margin-right: 0.5em;
+        }
+        [role="presentation"]:last-child {
+            margin-left: 0.5em;
         }
 
     }
