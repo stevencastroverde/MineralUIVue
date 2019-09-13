@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MButton renders correctly 1`] = `
+<button
+  class="m-button"
+  style="font-size: 1em; padding: 0px .5em;"
+>
+  <!---->
+   Test Button 
+  <!---->
+</button>
+`;
