@@ -66,7 +66,8 @@ export default {
                 'm-button--success': this.success,
                 'm-button--warning': this.warning,
                 'm-button--danger': this.danger,
-                'm-button--full-width': this.fullWidth
+                'm-button--full-width': this.fullWidth,
+                'm-button--circular': this.circular,
             }
         },
         buttonSize() {
@@ -89,7 +90,7 @@ export default {
                     padding: '0 .75em',
                 },
             }
-            return sizing[this.size];
+            return  this.circular ? {'font-size':sizing[this.size]['font-size']} : sizing[this.size];
         },
         fetchedPrependIcon() {
             return () => import(`@/components/Icons/${this.prependIcon}`);
@@ -180,20 +181,33 @@ export default {
         // sizing 
         &--small {
             width: 1em;
+            height: 1em;
         }
         &--medium {
             width: 2.5em;
+            height: 2.5em;
         }
         &--large {
             width: 4em;
+            height: 4em;
         }
         &--jumbo {
             width: 6em;
+            height: 6em;
         }
         &--full-width {
             width: 100%
         }
-
+        &--circular {
+            display: inline-block;
+            border-radius: 50%;
+            width: 2.5em;
+            line-height: 1;
+            > * {
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+        }
         //icons
         [role="presentation"]:first-child {
             margin-right: 0.5em;
