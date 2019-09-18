@@ -95,6 +95,14 @@ describe('MButton', () => {
         });
         expect(wrapper.classes()).toContain('m-button--full-width');
     })
+    it('disables button', () => {
+        const wrapper = shallowMount(MButton, {
+            propsData: {
+                disabled: true,
+            },
+        });
+        expect(wrapper.attributes().disabled).toEqual('disabled');
+    })
 
 
 
